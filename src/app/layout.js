@@ -1,20 +1,15 @@
 import MenuProvider from "@/context/menu/menuContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Head from "next/head";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata = {
-
-// };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <link rel="icon" href="/Dominos/dominos.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#005491" />

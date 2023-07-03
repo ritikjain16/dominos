@@ -16,6 +16,11 @@ const menuReducer = (state = {}, action) => {
         ...state,
         sortBy: action.payload,
       };
+    // case "SET_MENU":
+    //   return {
+    //     ...state,
+    //     menu: action.payload,
+    //   };
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import Image from "next/image";
 const MenuItem = ({ menu }) => {
   return (
     <div style={{ position: "relative" }}>
-      <Image src={`/Dominos/${menu.imgurl}`} width={320} height={280} className="menu-img" />
+      <Image src={`/Dominos/${menu.imgurl}`} width={320} height={280} className="menu-img" alt={menu.name} />
       <div
         style={{
           width: 320,
@@ -39,9 +39,9 @@ const MenuItem = ({ menu }) => {
             }}
           >
             {menu.veg ? (
-              <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} />
+              <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} alt="veg" />
             ) : (
-              <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} />
+              <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} alt="non-veg" />
             )}
             <h3>{menu.name}</h3>
           </div>

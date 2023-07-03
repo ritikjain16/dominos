@@ -1,11 +1,11 @@
 "use client";
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { menu } from "@/data/menu";
 import menuReducer from "./menuReducer";
 const MenuContext = createContext();
 
 const initialState = {
-  menu,
+  menu: [],
   allTypes: [
     "Veg Pizza",
     "Non-Veg Pizza",
@@ -27,6 +27,17 @@ const initialState = {
 
 const MenuProvider = ({ children }) => {
   const [state, dispatch] = useReducer(menuReducer, initialState);
+
+  // useEffect(() => {
+  //   setmenu();
+  // }, []);
+
+  // const setmenu = async () => {
+  //   const res = await fetch("/api/menu");
+  //   const menu = await res.json();
+  //   dispatch({ type: "SET_MENU", payload: menu });
+  // };
+
   const setisveg = (type) => {
     dispatch({ type: "SET_VEG", payload: type });
   };

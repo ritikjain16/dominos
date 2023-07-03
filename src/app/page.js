@@ -57,7 +57,7 @@ const Page = () => {
             }
           }}
         >
-          <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} />
+          <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} alt="veg" />
           <span style={{ fontSize: "13px" }}>Veg&nbsp;Only</span>
         </div>
         <div
@@ -82,7 +82,7 @@ const Page = () => {
             }
           }}
         >
-          <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} />
+          <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} alt="non-veg" />
           <span style={{ fontSize: "13px" }}>Non&nbsp;Veg&nbsp;Only</span>
         </div>
         {/* ---------------------------------- */}
