@@ -5,7 +5,7 @@ import menuReducer from "./menuReducer";
 const MenuContext = createContext();
 
 const initialState = {
-  menu: [],
+  menu,
   allTypes: [
     "Veg Pizza",
     "Non-Veg Pizza",
