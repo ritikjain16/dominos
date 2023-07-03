@@ -3,15 +3,19 @@ import Image from "next/image";
 const MenuItem = ({ menu }) => {
   return (
     <div style={{ position: "relative" }}>
-      <Image src={`/Dominos/${menu.imgurl}`} width={300} height={230} />
+      <Image src={`/Dominos/${menu.imgurl}`} width={320} height={280} className="menu-img" />
       <div
         style={{
-          width: 300,
-          height: 150,
+          width: 320,
+          height: 170,
           background:
             "linear-gradient(0deg, #000000 -4.12%, rgba(0, 0, 0, 0.81) 45.45%, rgba(0, 0, 0, 0) 97.13%)",
           position: "absolute",
           bottom: -10,
+          display: "flex",
+          justifyContent: "flex-end",
+          // alignItems: 'center',
+          flexDirection: "column",
         }}
       >
         <div
@@ -34,13 +38,11 @@ const MenuItem = ({ menu }) => {
               gap: 4,
             }}
           >
-            <Image
-              src={
-                "	https://m.dominos.co.in/jfl-discovery-ui/public/dist/default/images/global/tag-veg.svg"
-              }
-              width={13}
-              height={13}
-            />
+            {menu.veg ? (
+              <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} />
+            ) : (
+              <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} />
+            )}
             <h3>{menu.name}</h3>
           </div>
           <p style={{ marginTop: -15, fontSize: "9px" }}>
@@ -58,16 +60,21 @@ const MenuItem = ({ menu }) => {
           >
             <div style={{ marginTop: -15 }}>
               <p>₹{menu.size.regular.amount}</p>
-              <p
-                style={{
-                  marginTop: -18,
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                }}
-              >
-                Regular | New Hand Tossed {">"}
-              </p>
-              <p style={{ marginTop: -18 }}>----------------------</p>
+              {!menu.sides && !menu.desert && !menu.beverages && !menu.meals_combos && !menu.speciality_chicken && (
+                <>
+                  <p
+                    style={{
+                      marginTop: -18,
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {menu.size.regular.size} | {menu.tossed} {">"}
+                  </p>
+                  <p style={{ marginTop: -18 }}>----------------------</p>
+                </>
+              )}
             </div>
             <div
               style={{

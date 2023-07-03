@@ -1,0 +1,39 @@
+* {
+  /* margin: 0; */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-type {
+  justify-content: center;
+
+  @media only screen and (max-width: 800px) {
+    justify-content: flex-start;
+  }
+}
+
+.top-menu {
+  justify-content: center;
+
+  @media only screen and (max-width: 500px) {
+    justify-content: flex-start;
+  }
+}
+
+.menu-type-heading {
+  font-size: 16px;
+  word-wrap: none;
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+    width: 100px;
+    word-wrap: none;
+  }
+}
+
+.menu-img{
+    object-fit: cover;
+}
