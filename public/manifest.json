@@ -1,0 +1,25 @@
+{
+  "short_name": "Dominos",
+  "name": "Domino's is OPEN to serve you. Order all your favorite pizzas and we will ensure Zero contact delivery for all order.",
+  "icons": [
+    {
+      "src": "/Dominos/dominos.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/Dominos/dominos.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/Dominos/dominos.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#005491"
+}
