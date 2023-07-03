@@ -47,7 +47,7 @@ const MenuProvider = ({ children }) => {
   };
 
   const settype = (type) => {
-    let copyMenu = [...menu];
+    let copyMenu = [...state.menu];
 
     if (state.isVeg === "veg") {
       copyMenu = copyMenu.filter((m) => m.veg === true);

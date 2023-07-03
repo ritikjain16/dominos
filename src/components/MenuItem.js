@@ -3,7 +3,14 @@ import Image from "next/image";
 const MenuItem = ({ menu }) => {
   return (
     <div style={{ position: "relative" }}>
-      <Image src={`/Dominos/${menu.imgurl}`} width={320} height={280} className="menu-img" alt={menu.name} />
+      <Image
+        src={`/Dominos/${menu.imgurl}`}
+        width={320}
+        height={280}
+        className="menu-img"
+        alt={menu.name}
+        loading="eager"
+      />
       <div
         style={{
           width: 320,
@@ -39,9 +46,19 @@ const MenuItem = ({ menu }) => {
             }}
           >
             {menu.veg ? (
-              <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} alt="veg" />
+              <Image
+                src={"/Dominos/tag-veg.svg"}
+                width={13}
+                height={13}
+                alt="veg"
+              />
             ) : (
-              <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} alt="non-veg" />
+              <Image
+                src={"/Dominos/tag-non-veg.svg"}
+                width={13}
+                height={13}
+                alt="non-veg"
+              />
             )}
             <h3>{menu.name}</h3>
           </div>
@@ -60,21 +77,25 @@ const MenuItem = ({ menu }) => {
           >
             <div style={{ marginTop: -15 }}>
               <p>₹{menu.size.regular.amount}</p>
-              {!menu.sides && !menu.desert && !menu.beverages && !menu.meals_combos && !menu.speciality_chicken && (
-                <>
-                  <p
-                    style={{
-                      marginTop: -18,
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {menu.size.regular.size} | {menu.tossed} {">"}
-                  </p>
-                  <p style={{ marginTop: -18 }}>----------------------</p>
-                </>
-              )}
+              {!menu.sides &&
+                !menu.desert &&
+                !menu.beverages &&
+                !menu.meals_combos &&
+                !menu.speciality_chicken && (
+                  <>
+                    <p
+                      style={{
+                        marginTop: -18,
+                        fontSize: "12px",
+                        fontWeight: "bold",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {menu.size.regular.size} | {menu.tossed} {">"}
+                    </p>
+                    <p style={{ marginTop: -18 }}>----------------------</p>
+                  </>
+                )}
             </div>
             <div
               style={{
