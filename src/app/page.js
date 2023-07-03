@@ -14,16 +14,17 @@ const Page = () => {
     isVeg,
     setsortBy,
     sortBy,
+    menu,
   } = useMenuContext();
 
   useEffect(() => {
     settype(type);
-  }, [type, isVeg, sortBy]);
+  }, [type, isVeg, sortBy,menu]);
 
-  return (
+  return menu.length !== 0 ? (
     <div>
       <div
-      className="top-menu"
+        className="top-menu"
         style={{
           display: "flex",
           alignItems: "center",
@@ -32,8 +33,8 @@ const Page = () => {
           top: 0,
           zIndex: 2,
           background: "white",
-          overflowX:"scroll",
-          wordWrap:"none"
+          overflowX: "scroll",
+          wordWrap: "none",
         }}
       >
         <div
@@ -57,7 +58,12 @@ const Page = () => {
             }
           }}
         >
-          <Image src={"/Dominos/tag-veg.svg"} width={13} height={13} alt="veg" />
+          <Image
+            src={"/Dominos/tag-veg.svg"}
+            width={13}
+            height={13}
+            alt="veg"
+          />
           <span style={{ fontSize: "13px" }}>Veg&nbsp;Only</span>
         </div>
         <div
@@ -82,7 +88,12 @@ const Page = () => {
             }
           }}
         >
-          <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} alt="non-veg" />
+          <Image
+            src={"/Dominos/tag-non-veg.svg"}
+            width={13}
+            height={13}
+            alt="non-veg"
+          />
           <span style={{ fontSize: "13px" }}>Non&nbsp;Veg&nbsp;Only</span>
         </div>
         {/* ---------------------------------- */}
@@ -108,7 +119,9 @@ const Page = () => {
           }}
         >
           {/* <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} /> */}
-          <span style={{ fontSize: "13px" }}>Price:&nbsp;Low&nbsp;To&nbsp;High</span>
+          <span style={{ fontSize: "13px" }}>
+            Price:&nbsp;Low&nbsp;To&nbsp;High
+          </span>
         </div>
         <div
           style={{
@@ -132,7 +145,9 @@ const Page = () => {
           }}
         >
           {/* <Image src={"/Dominos/tag-non-veg.svg"} width={13} height={13} /> */}
-          <span style={{ fontSize: "13px" }}>Price:&nbsp;High&nbsp;To&nbsp;Low</span>
+          <span style={{ fontSize: "13px" }}>
+            Price:&nbsp;High&nbsp;To&nbsp;Low
+          </span>
         </div>
       </div>
       <div
@@ -174,6 +189,8 @@ const Page = () => {
       </div>
       <br />
     </div>
+  ) : (
+    <h1>Loading...</h1>
   );
 };
 
