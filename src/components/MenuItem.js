@@ -7,6 +7,24 @@ const MenuItem = ({ menu }) => {
   return (
     <>
       <div style={{ position: "relative", cursor: "pointer" }}>
+        {menu.bestseller && (
+          <div
+            style={{
+              position: "absolute",
+              top: 5,
+              right: 5,
+              background: "#fffc",
+              fontSize: "12px",
+              border: "0.5px solid #ddd",
+              boxShadow:
+                "0px 2px 4px rgba(0,0,0,.12), 0px 0px 1px rgba(0,0,0,.16)",
+              borderRadius: "4px",
+              padding: "0 4px",
+            }}
+          >
+            <span>Bestseller</span>
+          </div>
+        )}
         <Image
           src={`/Dominos/${menu.imgurl}`}
           width={320}
@@ -135,9 +153,11 @@ const MenuItem = ({ menu }) => {
           bottom: 0,
           zIndex: 5,
           display: open ? "block" : "none",
-          opacity:0.5
+          opacity: 0.5,
         }}
-        onClick={()=>{setopen(false)}}
+        onClick={() => {
+          setopen(false);
+        }}
       ></div>
       <div
         style={{
@@ -260,7 +280,7 @@ const MenuItem = ({ menu }) => {
               style={{
                 width: window.innerWidth > 500 ? 400 : window.innerWidth,
                 padding: 10,
-                paddingBottom:"30px"
+                paddingBottom: "30px",
               }}
             >
               <h4>Change Size</h4>
