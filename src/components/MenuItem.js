@@ -4,6 +4,75 @@ import Image from "next/image";
 const MenuItem = ({ menu }) => {
   const [open, setopen] = useState(false);
   const [SizeValue, setSizeValue] = useState("regular");
+  const [currPrice, setcurrPrice] = useState(menu.size[SizeValue].amount);
+  const [extraToppings, setextraToppings] = useState([]);
+
+  const vegToppings = [
+    {
+      name: "Grilled Mushrooms",
+      price: "60",
+    },
+    {
+      name: "Onion",
+      price: "60",
+    },
+    {
+      name: "Crisp Capsicum",
+      price: "60",
+    },
+    {
+      name: "Fresh Tomato",
+      price: "60",
+    },
+    {
+      name: "Paneer",
+      price: "60",
+    },
+    {
+      name: "Red Pepper",
+      price: "60",
+    },
+    {
+      name: "Jalapeno",
+      price: "60",
+    },
+    {
+      name: "Black Olive",
+      price: "60",
+    },
+  ];
+
+  const nonvegToppings = [
+    {
+      name: "Pepper Barbecue Chicken",
+      price: "75",
+    },
+    {
+      name: "Peri - Peri Chicken",
+      price: "75",
+    },
+    {
+      name: "Grilled Chicken Rasher",
+      price: "75",
+    },
+    {
+      name: "Chicken Sausage",
+      price: "75",
+    },
+    {
+      name: "Chicken Tikka",
+      price: "75",
+    },
+    {
+      name: "Chicken Pepperoni",
+      price: "75",
+    },
+    {
+      name: "Chicken Keema",
+      price: "75",
+    },
+  ];
+
   return (
     <>
       <div style={{ position: "relative", cursor: "pointer" }}>
@@ -156,6 +225,7 @@ const MenuItem = ({ menu }) => {
           opacity: 0.5,
         }}
         onClick={() => {
+          setextraToppings([]);
           setopen(false);
         }}
       ></div>
@@ -166,7 +236,14 @@ const MenuItem = ({ menu }) => {
           // background: "green",
           background: "white",
           position: "fixed",
-          // top: 0,
+          top:
+            !menu.dessert &&
+            !menu.sides &&
+            !menu.beverages &&
+            !menu.meals_combos &&
+            !menu.speciality_chicken &&
+            !menu.gourmet_pizza &&
+            10,
           left: 0,
           right: 0,
           bottom: 0,
@@ -196,7 +273,10 @@ const MenuItem = ({ menu }) => {
             background: "white",
             zIndex: 6,
           }}
-          onClick={() => setopen(false)}
+          onClick={() => {
+            setopen(false);
+            setextraToppings([]);
+          }}
         >
           X
         </div>
@@ -281,6 +361,8 @@ const MenuItem = ({ menu }) => {
                 width: window.innerWidth > 500 ? 400 : window.innerWidth,
                 padding: 10,
                 paddingBottom: "30px",
+                height: "200px",
+                overflowY: "scroll",
               }}
             >
               <h4>Change Size</h4>
@@ -305,7 +387,11 @@ const MenuItem = ({ menu }) => {
                       <input
                         type="radio"
                         value={"regular"}
-                        onChange={(e) => setSizeValue(e.target.value)}
+                        onChange={(e) => {
+                          setSizeValue(e.target.value);
+                          setcurrPrice(menu.size["regular"].amount);
+                          setextraToppings([])
+                        }}
                         checked={SizeValue === "regular"}
                       />
 
@@ -333,7 +419,11 @@ const MenuItem = ({ menu }) => {
                       <input
                         type="radio"
                         value={"medium"}
-                        onChange={(e) => setSizeValue(e.target.value)}
+                        onChange={(e) => {
+                          setSizeValue(e.target.value);
+                          setcurrPrice(menu.size["medium"].amount);
+                          setextraToppings([])
+                        }}
                         checked={SizeValue === "medium"}
                       />
                       <span>
@@ -360,7 +450,11 @@ const MenuItem = ({ menu }) => {
                       <input
                         type="radio"
                         value={"large"}
-                        onChange={(e) => setSizeValue(e.target.value)}
+                        onChange={(e) => {
+                          setSizeValue(e.target.value);
+                          setcurrPrice(menu.size["large"].amount);
+                          setextraToppings([])
+                        }}
                         checked={SizeValue === "large"}
                       />
                       <span>
@@ -376,8 +470,182 @@ const MenuItem = ({ menu }) => {
                   </div>
                 )}
               </div>
+              {/* --------------------------------------- */}
+              {!menu.pizza_mania && (
+                <>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        background:
+                          "linear-gradient(0deg, #EEFAFF, #EEFAFF),#fff",
+                        marginTop: "20px",
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          // onChange={()=>{}}
+                          checked={extraToppings.includes("Extra Cheese")}
+                          onChange={() => {
+                            // console.log("Add Extra cheese to crust");
+                            if (extraToppings.includes("Extra Cheese")) {
+                              let a = [...extraToppings];
+                              a.pop("Extra Cheese");
+                              setextraToppings(a);
+                              setcurrPrice((prev) => parseInt(prev) - 75);
+                            } else {
+                              setextraToppings([
+                                ...extraToppings,
+                                "Extra Cheese",
+                              ]);
+                              setcurrPrice((prev) => parseInt(prev) + 75);
+                            }
+                          }}
+                          style={{ accentColor: "#38AF00" }}
+                        />
+                        <span>Add Extra cheese to crust</span>
+                      </div>
+                      <span>+ ₹75.00</span>
+                    </div>
+                  </div>
+                  {/* ---------------------- */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "15px",
+                    }}
+                  >
+                    <h4>Add Veg Toppings</h4>
+                    <Image
+                      src={"/Dominos/tag-veg.svg"}
+                      width={13}
+                      height={13}
+                      alt="veg"
+                    />
+                  </div>
+                  {vegToppings.map((v) => (
+                    <div
+                      key={v.name}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginTop: "10px",
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          
+                          // onChange={(e) => {
+                          //   console.log(e.target.value);
+                          // }}
+                          onChange={() => {
+                            // console.log(v);
+                            if (extraToppings.includes(v.name)) {
+                              let a = [...extraToppings];
+                              a.pop(v.name);
+                              setextraToppings(a);
+                              setcurrPrice((prev) => parseInt(prev) - 60);
+                            } else {
+                              setextraToppings([...extraToppings, v.name]);
+                              setcurrPrice((prev) => parseInt(prev) + 60);
+                            }
+                          }}
+                          checked={extraToppings.includes(v.name)}
+                          style={{ accentColor: "#38AF00" }}
+                        />
+                        <span>{v.name}</span>
+                      </div>
+                      <span>+ ₹{v.price}.0</span>
+                    </div>
+                  ))}
+                  {/* ---------------------- */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "15px",
+                    }}
+                  >
+                    <h4>Add non-veg Toppings</h4>
+                    <Image
+                      src={"/Dominos/tag-non-veg.svg"}
+                      width={13}
+                      height={13}
+                      alt="veg"
+                    />
+                  </div>
+                  {menu.veg && (
+                    <span style={{ fontSize: "10px", fontWeight: "400" }}>
+                      You will be adding non-veg toppings to a veg pizza.{" "}
+                    </span>
+                  )}
+                  {nonvegToppings.map((v) => (
+                    <div
+                      key={v.name}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginTop: "10px",
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          // onChange={(e) => {
+                          //   console.log(e.target.value);
+                          // }}
+                          onChange={() => {
+                            // console.log(v);
+                            if (extraToppings.includes(v.name)) {
+                              let a = [...extraToppings];
+                              a.pop(v.name);
+                              setextraToppings(a);
+                              setcurrPrice((prev) => parseInt(prev) - 75);
+                            } else {
+                              setextraToppings([...extraToppings, v.name]);
+                              setcurrPrice((prev) => parseInt(prev) + 75);
+                            }
+                          }}
+                          checked={extraToppings.includes(v.name)}
+                          style={{ accentColor: "#38AF00" }}
+                        />
+                        <span>{v.name}</span>
+                      </div>
+                      <span>+ ₹{v.price}.0</span>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           )}
+
         <div
           style={{
             width: window.innerWidth > 500 ? 400 : window.innerWidth,
@@ -397,6 +665,19 @@ const MenuItem = ({ menu }) => {
               </span>
             )}
 
+          {extraToppings.length !== 0 && (
+            <div>
+              <span style={{ fontSize: "11px", fontWeight: "bold" }}>
+                Added:
+              </span>
+              {extraToppings.map((e) => (
+                <span key={e} style={{ fontSize: "11px", fontWeight: "300" }}>
+                  {e}
+                  {extraToppings.length > 1 && ", "}
+                </span>
+              ))}
+            </div>
+          )}
           <div
             style={{
               background: "#e31837",
@@ -411,7 +692,7 @@ const MenuItem = ({ menu }) => {
               color: "white",
             }}
           >
-            ₹{menu.size[SizeValue].amount} | Add +
+            ₹{currPrice} | Add +
           </div>
         </div>
       </div>
