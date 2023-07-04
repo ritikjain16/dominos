@@ -260,6 +260,7 @@ const MenuItem = ({ menu }) => {
               style={{
                 width: window.innerWidth > 500 ? 400 : window.innerWidth,
                 padding: 10,
+                paddingBottom:"30px"
               }}
             >
               <h4>Change Size</h4>
