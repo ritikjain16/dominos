@@ -202,6 +202,7 @@ const MenuItem = ({ menu }) => {
                   fontSize: "1.2em",
                   borderRadius: "5px",
                 }}
+                onClick={() => setopen(true)}
               >
                 Add +
               </div>
@@ -243,7 +244,7 @@ const MenuItem = ({ menu }) => {
             !menu.meals_combos &&
             !menu.speciality_chicken &&
             !menu.gourmet_pizza &&
-            10,
+            50,
           left: 0,
           right: 0,
           bottom: 0,
@@ -390,7 +391,7 @@ const MenuItem = ({ menu }) => {
                         onChange={(e) => {
                           setSizeValue(e.target.value);
                           setcurrPrice(menu.size["regular"].amount);
-                          setextraToppings([])
+                          setextraToppings([]);
                         }}
                         checked={SizeValue === "regular"}
                       />
@@ -422,7 +423,7 @@ const MenuItem = ({ menu }) => {
                         onChange={(e) => {
                           setSizeValue(e.target.value);
                           setcurrPrice(menu.size["medium"].amount);
-                          setextraToppings([])
+                          setextraToppings([]);
                         }}
                         checked={SizeValue === "medium"}
                       />
@@ -453,7 +454,7 @@ const MenuItem = ({ menu }) => {
                         onChange={(e) => {
                           setSizeValue(e.target.value);
                           setcurrPrice(menu.size["large"].amount);
-                          setextraToppings([])
+                          setextraToppings([]);
                         }}
                         checked={SizeValue === "large"}
                       />
@@ -553,7 +554,6 @@ const MenuItem = ({ menu }) => {
                       >
                         <input
                           type="checkbox"
-                          
                           // onChange={(e) => {
                           //   console.log(e.target.value);
                           // }}
