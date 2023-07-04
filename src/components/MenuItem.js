@@ -73,6 +73,14 @@ const MenuItem = ({ menu }) => {
     },
   ];
 
+  const removeTopping = (array, topping) => {
+    const index = array.indexOf(topping);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+    return array;
+  };
+
   return (
     <>
       <div style={{ position: "relative", cursor: "pointer" }}>
@@ -500,8 +508,10 @@ const MenuItem = ({ menu }) => {
                             // console.log("Add Extra cheese to crust");
                             if (extraToppings.includes("Extra Cheese")) {
                               let a = [...extraToppings];
-                              a.pop("Extra Cheese");
-                              setextraToppings(a);
+                              // a.pop("Extra Cheese");
+                              setextraToppings(
+                                removeTopping(extraToppings, "Extra Cheese")
+                              );
                               setcurrPrice((prev) => parseInt(prev) - 75);
                             } else {
                               setextraToppings([
@@ -561,8 +571,10 @@ const MenuItem = ({ menu }) => {
                             // console.log(v);
                             if (extraToppings.includes(v.name)) {
                               let a = [...extraToppings];
-                              a.pop(v.name);
-                              setextraToppings(a);
+                              // a.pop(v.name);
+                              setextraToppings(
+                                removeTopping(extraToppings, v.name)
+                              );
                               setcurrPrice((prev) => parseInt(prev) - 60);
                             } else {
                               setextraToppings([...extraToppings, v.name]);
@@ -625,8 +637,10 @@ const MenuItem = ({ menu }) => {
                             // console.log(v);
                             if (extraToppings.includes(v.name)) {
                               let a = [...extraToppings];
-                              a.pop(v.name);
-                              setextraToppings(a);
+                              // a.pop(removeTopping());
+                              setextraToppings(
+                                removeTopping(extraToppings, v.name)
+                              );
                               setcurrPrice((prev) => parseInt(prev) - 75);
                             } else {
                               setextraToppings([...extraToppings, v.name]);
