@@ -244,7 +244,7 @@ const MenuItem = ({ menu }) => {
             !menu.meals_combos &&
             !menu.speciality_chicken &&
             !menu.gourmet_pizza &&
-            150,
+            170,
           left: 0,
           right: 0,
           bottom: 0,
