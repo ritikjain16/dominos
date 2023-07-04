@@ -19,7 +19,7 @@ const Page = () => {
 
   useEffect(() => {
     settype(type);
-  }, [type, isVeg, sortBy,menu]);
+  }, [type, isVeg, sortBy, menu]);
 
   return menu.length !== 0 ? (
     <div>
@@ -184,7 +184,7 @@ const Page = () => {
         }}
       >
         {filteredMenu.map((item) => (
-          <MenuItem key={Math.random()} menu={item} />
+          <MenuItem key={item._id} menu={item} />
         ))}
       </div>
       <br />

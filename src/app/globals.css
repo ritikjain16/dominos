@@ -2,6 +2,8 @@
   /* margin: 0; */
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 ::-webkit-scrollbar {
@@ -34,6 +36,27 @@
   }
 }
 
-.menu-img{
-    object-fit: cover;
+.menu-img {
+  object-fit: cover;
+}
+
+.dialog {
+  animation: dialoganim 0.2s ease-in-out;
+}
+
+@keyframes dialoganim {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY((0%));
+  }
+}
+
+.menu-img1 {
+  height: 50%;
+  object-fit: fill;
+  /* @media only screen and (max-width: 600px) {
+    object-fit: fill;
+  } */
 }

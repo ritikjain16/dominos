@@ -61,7 +61,7 @@ const MenuProvider = ({ children }) => {
             m.veg === true &&
             m.pizza_mania === false &&
             m.sides === false &&
-            m.desert === false &&
+            m.dessert === false &&
             m.beverages === false &&
             m.meals_combos === false &&
             m.speciality_chicken === false
@@ -71,7 +71,7 @@ const MenuProvider = ({ children }) => {
             m.veg === false &&
             m.pizza_mania === false &&
             m.sides === false &&
-            m.desert === false &&
+            m.dessert === false &&
             m.beverages === false &&
             m.meals_combos === false &&
             m.speciality_chicken === false
@@ -81,7 +81,7 @@ const MenuProvider = ({ children }) => {
         case "Sides":
           return m.sides === true;
         case "Dessert":
-          return m.desert === true;
+          return m.dessert === true;
         case "Bestsellers":
           return m.bestseller === true;
         case "Beverages":
