@@ -575,10 +575,10 @@ const MenuItem = ({ menu }) => {
                               setextraToppings(
                                 removeTopping(extraToppings, v.name)
                               );
-                              setcurrPrice((prev) => parseInt(prev) - 60);
+                              setcurrPrice((prev) =>SizeValue==="regular"?parseInt(prev) - 35:SizeValue==="medium"?parseInt(prev)-60:parseInt(prev)-80 );
                             } else {
                               setextraToppings([...extraToppings, v.name]);
-                              setcurrPrice((prev) => parseInt(prev) + 60);
+                              setcurrPrice((prev) => SizeValue==="regular"?parseInt(prev) +35:SizeValue==="medium"?parseInt(prev)+60:parseInt(prev)+80);
                             }
                           }}
                           checked={extraToppings.includes(v.name)}
@@ -586,7 +586,7 @@ const MenuItem = ({ menu }) => {
                         />
                         <span>{v.name}</span>
                       </div>
-                      <span>+ ₹{v.price}.0</span>
+                      <span>+ ₹{SizeValue==="regular"?35:SizeValue==="medium"?60:80}.0</span>
                     </div>
                   ))}
                   {/* ---------------------- */}
@@ -641,10 +641,10 @@ const MenuItem = ({ menu }) => {
                               setextraToppings(
                                 removeTopping(extraToppings, v.name)
                               );
-                              setcurrPrice((prev) => parseInt(prev) - 75);
+                              setcurrPrice((prev) =>SizeValue==="regular"?parseInt(prev) - 50:SizeValue==="medium"?parseInt(prev)-75:parseInt(prev)-95 );
                             } else {
                               setextraToppings([...extraToppings, v.name]);
-                              setcurrPrice((prev) => parseInt(prev) + 75);
+                              setcurrPrice((prev) => SizeValue==="regular"?parseInt(prev) + 50:SizeValue==="medium"?parseInt(prev)+75:parseInt(prev)+95);
                             }
                           }}
                           checked={extraToppings.includes(v.name)}
@@ -652,7 +652,7 @@ const MenuItem = ({ menu }) => {
                         />
                         <span>{v.name}</span>
                       </div>
-                      <span>+ ₹{v.price}.0</span>
+                      <span>+ ₹{SizeValue==="regular"?50:SizeValue==="medium"?75:95}.0</span>
                     </div>
                   ))}
                 </>
