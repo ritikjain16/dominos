@@ -512,13 +512,13 @@ const MenuItem = ({ menu }) => {
                               setextraToppings(
                                 removeTopping(extraToppings, "Extra Cheese")
                               );
-                              setcurrPrice((prev) => parseInt(prev) - 75);
+                              setcurrPrice((prev) =>SizeValue==="regular"?parseInt(prev) - 50:SizeValue==="medium"?parseInt(prev)-75:parseInt(prev)-95 );
                             } else {
                               setextraToppings([
                                 ...extraToppings,
                                 "Extra Cheese",
                               ]);
-                              setcurrPrice((prev) => parseInt(prev) + 75);
+                              setcurrPrice((prev) =>SizeValue==="regular"?parseInt(prev) +50:SizeValue==="medium"?parseInt(prev)+75:parseInt(prev)+95 );
                             }
                           }}
                           style={{ accentColor: "#38AF00" }}
