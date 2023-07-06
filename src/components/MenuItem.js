@@ -525,7 +525,7 @@ const MenuItem = ({ menu }) => {
                         />
                         <span>Add Extra cheese to crust</span>
                       </div>
-                      <span>+ ₹75.00</span>
+                      <span>+ ₹{SizeValue==="regular"?50:SizeValue==="medium"?75:95}.00</span>
                     </div>
                   </div>
                   {/* ---------------------- */}
